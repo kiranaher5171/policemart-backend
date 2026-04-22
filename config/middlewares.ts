@@ -1,23 +1,13 @@
 import type { Core } from '@strapi/strapi';
 
 /**
- * Admin loads same-origin JS chunks (script-src 'self'). Vite HMR in develop uses eval()
- * ('unsafe-eval'). Do not set script-src to only 'unsafe-eval' — that blocks /admin/*.js.
+ * Use default strapi::security (CSP includes 'self' for admin bundles + dev admin/HMR rules).
+ * Overriding only script-src (e.g. to 'unsafe-eval' alone) breaks production /admin/*.js on Render.
  */
 const config: Core.Config.Middlewares = [
   'strapi::logger',
   'strapi::errors',
-  {
-    name: 'strapi::security',
-    config: {
-      contentSecurityPolicy: {
-        useDefaults: true,
-        directives: {
-          'script-src': ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-        },
-      },
-    },
-  },
+  'strapi::security',
   'strapi::cors',
   'strapi::poweredBy',
   'strapi::query',
