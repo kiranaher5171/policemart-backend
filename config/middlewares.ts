@@ -1,9 +1,8 @@
 import type { Core } from '@strapi/strapi';
 
 /**
- * Strapi Admin in dev uses Vite; HMR uses eval(), so CSP needs script-src 'unsafe-eval'.
- * Use the object form of strapi::security (avoids TS mismatch: extendMiddlewareConfiguration
- * types do not accept Core.Config.Middlewares because MiddlewareHandler is allowed there).
+ * Admin loads same-origin JS chunks (script-src 'self'). Vite HMR in develop uses eval()
+ * ('unsafe-eval'). Do not set script-src to only 'unsafe-eval' — that blocks /admin/*.js.
  */
 const config: Core.Config.Middlewares = [
   'strapi::logger',
@@ -12,8 +11,9 @@ const config: Core.Config.Middlewares = [
     name: 'strapi::security',
     config: {
       contentSecurityPolicy: {
+        useDefaults: true,
         directives: {
-          'script-src': ["'unsafe-eval'"],
+          'script-src': ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
         },
       },
     },
