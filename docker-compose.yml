@@ -1,0 +1,23 @@
+services:
+  mysql:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: strapi_local_root
+      MYSQL_DATABASE: defaultdb
+      MYSQL_USER: strapi
+      MYSQL_PASSWORD: strapi
+    ports:
+      # Host 3307 avoids clashing with another MySQL already on 3306 (XAMPP, etc.)
+      - "3307:3306"
+    volumes:
+      - policemart_mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-pstrapi_local_root"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+      start_period: 40s
+
+volumes:
+  policemart_mysql_data:
