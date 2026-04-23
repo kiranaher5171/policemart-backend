@@ -1,0 +1,94 @@
+{
+    "kind": "collectionType",
+    "collectionName": "contact_messages",
+    "info": {
+        "singularName": "contact-message",
+        "pluralName": "contact-messages",
+        "displayName": "Contact message"
+    },
+    "options": {
+        "draftAndPublish": false
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "firstName": {
+            "type": "string",
+            "required": true,
+            "maxLength": 120
+        },
+        "lastName": {
+            "type": "string",
+            "required": true,
+            "maxLength": 120
+        },
+        "industryType": {
+            "type": "string",
+            "required": true,
+            "maxLength": 200
+        },
+        "businessType": {
+            "type": "string",
+            "required": true,
+            "maxLength": 200
+        },
+        "organization": {
+            "type": "string",
+            "required": true,
+            "maxLength": 300
+        },
+        "jobTitle": {
+            "type": "string",
+            "required": true,
+            "maxLength": 200
+        },
+        "email": {
+            "type": "string",
+            "required": true,
+            "maxLength": 320
+        },
+        "phoneCountryCode": {
+            "type": "string",
+            "maxLength": 12
+        },
+        "phoneNumber": {
+            "type": "string",
+            "maxLength": 40
+        },
+        "geography": {
+            "type": "string",
+            "required": true,
+            "maxLength": 200
+        },
+        "country": {
+            "type": "string",
+            "required": true,
+            "maxLength": 120
+        },
+        "city": {
+            "type": "string",
+            "required": true,
+            "maxLength": 120
+        },
+        "inquiryType": {
+            "type": "string",
+            "required": true,
+            "maxLength": 200
+        },
+        "message": {
+            "type": "text"
+        },
+        "hearAboutUs": {
+            "type": "string",
+            "required": true,
+            "maxLength": 200
+        },
+        "newsletter": {
+            "type": "boolean",
+            "default": false
+        },
+        "agreedToTerms": {
+            "type": "boolean",
+            "default": false
+        }
+    }
+}

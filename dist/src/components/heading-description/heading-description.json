@@ -1,0 +1,16 @@
+{
+    "collectionName": "components_heading_description_heading_descriptions",
+    "info": {
+        "displayName": "Heading-Description"
+    },
+    "options": {},
+    "attributes": {
+        "Heading": {
+            "type": "string"
+        },
+        "Description": {
+            "type": "blocks"
+        }
+    },
+    "config": {}
+}
