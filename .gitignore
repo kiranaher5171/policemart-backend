@@ -125,6 +125,6 @@ coverage
 license.txt
 exports
 .strapi
-dist
+# dist/ is intentionally tracked: commit `npm run build` output so Render can skip admin build (RAM).
 .strapi-updater.json
 .strapi-cloud.json
